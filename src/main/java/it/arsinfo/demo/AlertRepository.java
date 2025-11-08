@@ -1,0 +1,14 @@
+package it.arsinfo.demo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface AlertRepository extends JpaRepository<Alert, Long> {
+    List<Alert> findByAlarm(Long alarm);
+
+    List<Alert> findByUei(String uei);
+
+    List<Alert> findByLabel(String label);
+
+}
