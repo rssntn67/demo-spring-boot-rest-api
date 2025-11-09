@@ -79,14 +79,12 @@ class DemoApplicationTests {
     @Test
     void repositoryTest() {
         populate();
-        System.out.println("printing alert by alarm 1L");
-        repository.findByAlarm(1L).forEach(System.out::println);
+        System.out.println("printing alert by Status WARNING");
+        repository.findByStatus("WARNING").forEach(System.out::println);
 
-        System.out.println("printing alert by uei upennms.org/alert");
-        repository.findByUei("opennms.org/alert").forEach(System.out::println);
 
-        System.out.println("printing alert by label roberta");
-        repository.findByLabel("roberta").forEach(System.out::println);
+        System.out.println("printing alert by ack user roberta");
+        repository.findByAlarmAckUser("roberta").forEach(System.out::println);
 
     }
 
@@ -100,4 +98,4 @@ class DemoApplicationTests {
     }
 
 
-    }
+}

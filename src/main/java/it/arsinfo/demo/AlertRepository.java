@@ -5,10 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface AlertRepository extends JpaRepository<Alert, Long> {
-    List<Alert> findByAlarm(Long alarm);
+    List<Alert> findByStatus(String status);
 
-    List<Alert> findByUei(String uei);
+    List<Alert> findByDescription(String description);
 
-    List<Alert> findByLabel(String label);
+    List<Alert> findByAlarmAckUser(String alarmAckUser);
+
+    List<Alert> findByAttributes(String attributes);
 
 }

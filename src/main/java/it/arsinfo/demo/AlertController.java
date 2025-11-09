@@ -32,16 +32,6 @@ public class AlertController {
         return alertList;
     }
 
-    @GetMapping("/alerts?uei={uei}")
-    public List<Alert> getAlertsByUei(@PathVariable String uei) {
-        return alertRepository.findByUei(uei);
-    }
-
-    @GetMapping("/alerts?alarm={alarm}")
-    public List<Alert> getAlertsByAlarm(@PathVariable Long alarm) {
-        return alertRepository.findByAlarm(alarm);
-    }
-
     @GetMapping("/alerts/{id}")
     public ResponseEntity<Alert> getAlertById(@PathVariable Long id) {
         Alert alert =  alertRepository.findById(id)
@@ -63,10 +53,11 @@ public class AlertController {
         Alert alert = alertRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Alert not exist with id :" + id));
 
-        alert.setAlarm(alertDetails.getAlarm());
-        alert.setUei(alertDetails.getUei());
-        alert.setLabel(alertDetails.getLabel());
-        alert.setMsg(alertDetails.getMsg());
+        alert.setStatus(alertDetails.getStatus());
+        alert.setAttributes(alertDetails.getAttributes());
+        alert.setDescription(alertDetails.getDescription());
+        alert.setAlarmAckUser(alertDetails.getAlarmAckUser());
+        alert.setTimestamp(alertDetails.getTimestamp());
 
         alertRepository.save(alert);
         return ResponseEntity.noContent().build();
