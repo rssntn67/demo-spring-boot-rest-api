@@ -7,7 +7,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.util.Assert;
 
-import java.util.List;
+import java.util.Date;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DemoApplicationTests {
@@ -34,38 +34,43 @@ class DemoApplicationTests {
         repository.deleteAll();
 
         Alert alertA = new Alert();
-        alertA.setAlarm(1L);
-        alertA.setUei("opennms.org/alert");
-        alertA.setLabel("antonio");
-        alertA.setMsg("niente di nuovo sul fronte ovest");
+        alertA.setStatus("CRITICAL");
+        alertA.setAttributes("opennms.org/alert");
+        alertA.setAlarmAckUser("antonio");
+        alertA.setDescription("niente di nuovo sul fronte ovest");
+        alertA.setTimestamp(new Date());
         repository.save(alertA);
 
         Alert alertAA = new Alert();
-        alertAA.setAlarm(1L);
-        alertAA.setUei("opennms.org/alert");
-        alertAA.setLabel("antonio");
-        alertAA.setMsg("qualcosa cambia fronte ovest");
+        alertAA.setStatus("OK");
+        alertAA.setAttributes("opennms.org/alert");
+        alertAA.setAlarmAckUser("antonio");
+        alertAA.setDescription("qualcosa cambia fronte ovest");
+        alertAA.setTimestamp(new Date());
         repository.save(alertAA);
 
         Alert alertB = new Alert();
-        alertB.setAlarm(2L);
-        alertB.setUei("opennms.org/alert");
-        alertB.setLabel("roberta");
-        alertB.setMsg("niente di nuovo sul fronte ovest");
+        alertB.setStatus("WARNING");
+        alertB.setAttributes("opennms.org/alert");
+        alertB.setAlarmAckUser("roberta");
+        alertB.setDescription("niente di nuovo sul fronte ovest");
+        alertB.setTimestamp(new Date());
         repository.save(alertB);
 
         Alert alertBB = new Alert();
-        alertBB.setAlarm(2L);
-        alertBB.setUei("opennms.org/alert");
-        alertBB.setLabel("roberta");
-        alertBB.setMsg("updated");
+        alertBB.setStatus("ACKNOWLEDGED");
+        alertBB.setAttributes("opennms.org/alert");
+        alertBB.setAlarmAckUser("roberta");
+        alertBB.setDescription("updated");
+        alertBB.setTimestamp(new Date());
         repository.save(alertBB);
 
         Alert alertC = new Alert();
-        alertC.setAlarm(3L);
-        alertC.setUei("opennms.org/alert/coordinate");
-        alertC.setLabel("valeria");
-        alertC.setMsg("niente di nuovo sul fronte ovest");
+        alertC.setStatus("OK");
+        alertC.setAttributes("opennms.org/alert/coordinate");
+        alertC.setAlarmAckUser("valeria");
+        alertC.setDescription("niente di nuovo sul fronte ovest");
+        alertC.setTimestamp(new Date());
         repository.save(alertC);
 
 
